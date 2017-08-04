@@ -19,3 +19,9 @@ allprojects {
 }
 
 apply plugin: 'com.uber.okbuck'
+
+okbuck {
+  wrapper {
+    repo = 'https://github.com/cwoodwar6/buck.git'
+  }
+}
