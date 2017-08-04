@@ -6,3 +6,10 @@
 /build
 
 *.iml
+
+# Ignore build files used by Buck
+buck-out
+.buckd
+.okbuck
+.buckconfig.local
+**/BUCK
