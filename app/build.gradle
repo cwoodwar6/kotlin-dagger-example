@@ -1,29 +1,28 @@
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-kapt'
-apply plugin: 'kotlin-android-extensions'
 
 android {
-    compileSdkVersion 24
-    buildToolsVersion "25.0.0"
+    compileSdkVersion 25
+    buildToolsVersion "25.0.2"
 
     defaultConfig {
         applicationId "org.loop.example"
-        minSdkVersion 16
-        targetSdkVersion 24
+        minSdkVersion 23
+        targetSdkVersion 25
         versionCode 1
         versionName "1.0"
     }
 
-  signingConfigs {
-    debug {
-      storeFile file("external/debug_keystore.jks")
-      storePassword "testbuild"
-      storeType "JKS"
-      keyAlias "testbuild"
-      keyPassword "testbuild"
+    signingConfigs {
+        debug {
+            storeFile file("external/debug_keystore.jks")
+            storePassword "testbuild"
+            storeType "JKS"
+            keyAlias "testbuild"
+            keyPassword "testbuild"
+        }
     }
-  }
 
     buildTypes {
         release {
@@ -32,33 +31,28 @@ android {
             signingConfig signingConfigs.debug
         }
     }
-    dexOptions {
-        javaMaxHeapSize "2048M"
-    }
-    compileOptions.incremental = false
 }
 
 dependencies {
-    //automatically added dependencies when project was created
-    compile fileTree(dir: 'libs', include: ['*.jar'])
-    //Kotlin dependencies including Anko
     compile "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
-    compile 'org.jetbrains.anko:anko-support-v4:0.9'
+//    compile 'org.jetbrains.anko:anko-support-v4:0.9'
 
     //Dagger 2 dependencies
-    compile 'com.google.dagger:dagger:2.4'
-    kapt 'com.google.dagger:dagger-compiler:2.4'
-    provided 'org.glassfish:javax.annotation:10.0-b28'
-    //Android basic dependencies
-    compile 'com.android.support:appcompat-v7:24.2.1'
-    compile 'com.android.support:recyclerview-v7:24.2.1'
+    compile 'com.google.dagger:dagger:2.11'
+    kapt 'com.google.dagger:dagger-compiler:2.11'
+
+//   provided 'org.glassfish:javax.annotation:10.0-b28'
+
+//    compile 'com.android.support:appcompat-v7:25.3.1'
+//    compile 'com.android.support:recyclerview-v7:25.3.1'
 
     //Rx dependencies
-    compile 'io.reactivex:rxandroid:1.2.1'
-    compile 'io.reactivex:rxkotlin:0.60.0'
+//    compile 'io.reactivex:rxandroid:1.2.1'
+//    compile 'io.reactivex:rxkotlin:0.60.0'
+
     //Test dependencies
-    androidTestCompile 'commons-io:commons-io:2.4'
-    androidTestCompile 'com.android.support.test:testing-support-lib:0.1'
-    androidTestCompile 'com.android.support.test.espresso:espresso-core:2.0'
+//   androidTestCompile 'commons-io:commons-io:2.4'
+//   androidTestCompile 'com.android.support.test:testing-support-lib:0.1'
+//    androidTestCompile 'com.android.support.test.espresso:espresso-core:2.2.2'
 }
 
